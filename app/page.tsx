@@ -50,11 +50,16 @@ const LandingPage = () => {
           </Link>
 
           <div className="flex items-center gap-2">
-            <Button variant="ghost" render={<Link href="/sign-in" />}>
-              Sign in
-            </Button>
+            <Button
+              variant="ghost"
+              nativeButton={false}
+              render={<Link href="/sign-in">Sign in</Link>}
+            />
 
-            <Button render={<Link href="/sign-up" />}>Get started</Button>
+            <Button
+              nativeButton={false}
+              render={<Link href="/sign-up">Get started</Link>}
+            />
           </div>
         </div>
       </header>
@@ -240,11 +245,15 @@ const LandingPage = () => {
             size="lg"
             variant="secondary"
             className="mt-7 rounded-xl"
-            render={<Link href="/sign-up" />}
-          >
-            Upload your first receipt
-            <ArrowRight className="size-4" />
-          </Button>
+            nativeButton={false}
+            render={
+              <Link href="/sign-up">
+                {" "}
+                Upload your first receipt
+                <ArrowRight className="size-4" />
+              </Link>
+            }
+          />
         </div>
       </section>
 
