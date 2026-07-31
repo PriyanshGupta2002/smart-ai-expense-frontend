@@ -13,18 +13,28 @@ export type ChatStreamEvent =
       message: string;
     };
 
-export interface MessagesResponse {
-  messages: ChatMessage[];
+export interface ChatRequest {
+  message: string;
+}
+
+export interface ChatArtifact {
+  id?: string;
+  name: string;
+  mime_type: string;
+  url: string;
+  file_id?: string;
+  size?: number;
 }
 
 export interface ChatMessage {
   id: string;
-  thread_id?: string;
-  role: ChatRole;
+  thread_id: string;
+  role: "user" | "assistant";
   content: string;
-  created_at?: string;
+
+  artifacts?: ChatArtifact[];
 }
 
-export interface ChatRequest {
-  message: string;
+export interface MessagesResponse {
+  messages: ChatMessage[];
 }

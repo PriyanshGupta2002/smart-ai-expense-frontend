@@ -6,6 +6,9 @@ import { Bot, User } from "lucide-react";
 
 import type { ChatMessage } from "@/types/chat";
 
+import AiMarkdownRenderer from "./ai-markdown";
+import ChatArtifactCard from "./chat-artifact-card";
+
 interface ChatMessagesProps {
   messages: ChatMessage[];
   isStreaming: boolean;
@@ -21,7 +24,7 @@ const ChatMessages = ({ messages, isStreaming }: ChatMessagesProps) => {
   }, [messages]);
 
   return (
-    <div className="flex-1 overflow-y-auto">
+    <div className="flex-1 overflow-y-auto no-scrollbar">
       <div className="space-y-6 pb-8">
         {messages.map((message, index) => (
           <ChatMessageItem
@@ -71,12 +74,37 @@ const ChatMessageItem = ({
           className={
             isUser
               ? "rounded-2xl bg-primary px-4 py-2.5 text-sm text-primary-foreground"
-              : "px-1 py-1 text-sm leading-7"
+              : "min-w-0 px-1 py-1 text-sm leading-7"
           }
         >
-          {message.content}
+          {isUser ? (
+            message.content
+          ) : (
+            <>
+              {message.content ? (
+                <AiMarkdownRenderer content={message.content} />
+              ) : null}
 
-          {isStreaming && !message.content && <TypingIndicator />}
+              {message.artifacts?.length ? (
+                <div className="mt-4 space-y-2">
+                  {message.artifacts.map((artifact, index) => (
+                    <ChatArtifactCard
+                      key={
+                        artifact.id ??
+                        artifact.file_id ??
+                        `${artifact.name}-${index}`
+                      }
+                      artifact={artifact}
+                    />
+                  ))}
+                </div>
+              ) : null}
+
+              {isStreaming &&
+                !message.content &&
+                !message.artifacts?.length && <TypingIndicator />}
+            </>
+          )}
         </div>
       </div>
     </div>

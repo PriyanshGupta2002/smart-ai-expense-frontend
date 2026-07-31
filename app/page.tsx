@@ -41,11 +41,11 @@ const LandingPage = () => {
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
           <Link href="/" className="flex items-center gap-2">
             <div className="flex size-9 items-center justify-center rounded-xl bg-primary text-primary-foreground">
-              <ReceiptText className="size-5" />
+              <Sparkles className="size-5" />
             </div>
 
             <span className="text-lg font-semibold tracking-tight">
-              SpendAI
+              Expense AI
             </span>
           </Link>
 
@@ -261,7 +261,7 @@ const LandingPage = () => {
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-8 text-sm text-muted-foreground">
           <div className="flex items-center gap-2">
             <ReceiptText className="size-4" />
-            <span>SpendAI</span>
+            <span>Expense AI</span>
           </div>
 
           <span>AI-powered expense tracking</span>

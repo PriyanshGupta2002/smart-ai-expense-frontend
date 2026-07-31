@@ -2,6 +2,7 @@ export type ReceiptProcessingStatus =
   | "PENDING"
   | "PROCESSING"
   | "COMPLETED"
+  | "NEEDS_REVIEW"
   | "FAILED";
 
 export interface ReceiptUploadResponse {

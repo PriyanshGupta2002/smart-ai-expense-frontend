@@ -77,11 +77,17 @@ const ReceiptsTable = ({
                   className={isFetching ? "opacity-70" : undefined}
                 >
                   <TableCell>
-                    <div className="max-w-[220px]">
-                      <p className="truncate font-medium">
+                    {receipt.processing_status === "PENDING" ||
+                    receipt.processing_status === "PROCESSING" ? (
+                      <div className="space-y-2">
+                        <Skeleton className="h-4 w-32" />
+                        <Skeleton className="h-3 w-20" />
+                      </div>
+                    ) : (
+                      <p className="max-w-[220px] truncate font-medium">
                         {receipt.merchant_name ?? "Unknown merchant"}
                       </p>
-                    </div>
+                    )}
                   </TableCell>
 
                   <TableCell className="text-muted-foreground">
@@ -97,9 +103,15 @@ const ReceiptsTable = ({
                   <TableCell>
                     <ReceiptStatusBadge status={receipt.processing_status} />
                   </TableCell>
-
-                  <TableCell className="text-right font-medium tabular-nums">
-                    {formatCurrency(receipt.total, receipt.currency)}
+                  <TableCell className="text-right">
+                    {receipt.processing_status === "PENDING" ||
+                    receipt.processing_status === "PROCESSING" ? (
+                      <Skeleton className="ml-auto h-4 w-16" />
+                    ) : (
+                      <span className="font-medium tabular-nums">
+                        {formatCurrency(receipt.total, receipt.currency)}
+                      </span>
+                    )}
                   </TableCell>
 
                   <TableCell>

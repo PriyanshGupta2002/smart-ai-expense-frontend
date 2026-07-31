@@ -16,17 +16,15 @@ export const useThreads = () => {
     queryFn: getThreads,
   });
 };
-
-export const useThreadMessages = (threadId: string) => {
+export const useThreadMessages = (threadId: string, enabled = true) => {
   return useQuery({
     queryKey: queryKeys.threads.messages(threadId),
 
     queryFn: () => getThreadMessages(threadId),
 
-    enabled: !!threadId,
+    enabled: Boolean(threadId) && enabled,
   });
 };
-
 export const useCreateThread = () => {
   const queryClient = useQueryClient();
 

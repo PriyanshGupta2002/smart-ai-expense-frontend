@@ -12,7 +12,7 @@ export const uploadReceipt = async (
   formData.append("file", file);
 
   const { data } = await api.post<ReceiptUploadResponse>(
-    `${BASE_RECEIPT_PREFIX}/upload`,
+    `${BASE_RECEIPT_PREFIX}`,
     formData,
   );
 

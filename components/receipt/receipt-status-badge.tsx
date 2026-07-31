@@ -1,3 +1,5 @@
+import { Check, Clock3, LoaderCircle, TriangleAlert, X } from "lucide-react";
+
 import { Badge } from "@/components/ui/badge";
 
 interface ReceiptStatusBadgeProps {
@@ -5,45 +7,50 @@ interface ReceiptStatusBadgeProps {
 }
 
 const ReceiptStatusBadge = ({ status }: ReceiptStatusBadgeProps) => {
-  const normalizedStatus = status.toUpperCase();
+  switch (status) {
+    case "PENDING":
+      return (
+        <Badge variant="secondary">
+          <Clock3 className="size-3" />
+          Queued
+        </Badge>
+      );
 
-  if (normalizedStatus === "COMPLETED") {
-    return (
-      <Badge
-        variant="secondary"
-        className="bg-emerald-500/10 text-emerald-700 hover:bg-emerald-500/10 dark:text-emerald-400"
-      >
-        Completed
-      </Badge>
-    );
+    case "PROCESSING":
+      return (
+        <Badge variant="secondary">
+          <LoaderCircle className="size-3 animate-spin" />
+          Processing
+        </Badge>
+      );
+
+    case "COMPLETED":
+      return (
+        <Badge variant="outline">
+          <Check className="size-3" />
+          Completed
+        </Badge>
+      );
+
+    case "NEEDS_REVIEW":
+      return (
+        <Badge variant="secondary">
+          <TriangleAlert className="size-3" />
+          Review
+        </Badge>
+      );
+
+    case "FAILED":
+      return (
+        <Badge variant="destructive">
+          <X className="size-3" />
+          Failed
+        </Badge>
+      );
+
+    default:
+      return <Badge variant="secondary">{status}</Badge>;
   }
-
-  if (normalizedStatus === "PROCESSING") {
-    return (
-      <Badge
-        variant="secondary"
-        className="bg-amber-500/10 text-amber-700 hover:bg-amber-500/10 dark:text-amber-400"
-      >
-        Processing
-      </Badge>
-    );
-  }
-
-  if (normalizedStatus === "FAILED") {
-    return <Badge variant="destructive">Failed</Badge>;
-  }
-
-  if (normalizedStatus === "PENDING") {
-    return <Badge variant="outline">Pending</Badge>;
-  }
-
-  return <Badge variant="outline">{formatStatus(status)}</Badge>;
 };
-
-const formatStatus = (value: string) =>
-  value
-    .replaceAll("_", " ")
-    .toLowerCase()
-    .replace(/\b\w/g, (char) => char.toUpperCase());
 
 export default ReceiptStatusBadge;
