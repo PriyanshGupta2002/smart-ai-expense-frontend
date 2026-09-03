@@ -47,3 +47,22 @@ export interface AIInsight {
 export interface AIInsightsResponse {
   insights: AIInsight[];
 }
+
+export interface ProfileAvatarCardProps {
+  image_url: string | null;
+  loading: boolean;
+}
+
+export interface ProfileInformationFormProps {
+  first_name: string;
+  last_name: string;
+  email: string;
+  loading: boolean;
+}
+
+export interface AccountInformationCardProps {
+  created_at: string;
+  loading: boolean;
+  connectionStatus: boolean;
+  connectionStatusLoading: boolean;
+}

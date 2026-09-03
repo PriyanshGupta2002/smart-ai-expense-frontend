@@ -23,6 +23,11 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import ChatHistory from "../sidebar/chat-history";
+import Avatar from "../landing/avatar";
+import Startup from "../landing/startup";
+import SidebarAvatar from "../sidebar/sidebar-dropdown";
+import { useDashboardMe } from "@/hooks/use-dashboard";
+import { useLogout } from "@/hooks/use-auth";
 
 const navigation = [
   {
@@ -44,6 +49,7 @@ const navigation = [
 
 const AppSidebar = () => {
   const pathname = usePathname();
+  const { data: me } = useDashboardMe();
 
   return (
     <Sidebar>
@@ -97,7 +103,15 @@ const AppSidebar = () => {
         <ChatHistory />
       </SidebarContent>
 
-      <SidebarFooter>{/* We'll put user/account menu here */}</SidebarFooter>
+      <SidebarFooter>
+        {me && (
+          <SidebarAvatar
+            first_name={me.first_name}
+            last_name={me.last_name}
+            email={me.email}
+          />
+        )}
+      </SidebarFooter>
     </Sidebar>
   );
 };

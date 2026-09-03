@@ -46,3 +46,8 @@ export const getAIInsights = async (): Promise<AIInsightsResponse> => {
 
   return data;
 };
+
+export const getDashboardMe = async () => {
+  const { data } = await api.get(`${BASE_DASHBOARD_PREFIX}/me`);
+  return data;
+};

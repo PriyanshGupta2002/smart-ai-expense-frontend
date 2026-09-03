@@ -10,3 +10,8 @@ export const login = async (payload: LoginRequest) => {
   const { data } = await api.post(`${BASE_AUTH_PREFIX}/login`, payload);
   return data;
 };
+
+export const logout = async () => {
+  const { data } = await api.post(`${BASE_AUTH_PREFIX}/logout`);
+  return data;
+};

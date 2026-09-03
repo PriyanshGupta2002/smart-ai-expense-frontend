@@ -12,6 +12,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
+import Startup from "@/components/landing/startup";
+
 const features = [
   {
     icon: ScanLine,
@@ -33,7 +35,7 @@ const features = [
   },
 ];
 
-const LandingPage = () => {
+const LandingPage = async () => {
   return (
     <main className="min-h-screen bg-background">
       {/* Navbar */}
@@ -48,19 +50,7 @@ const LandingPage = () => {
               Expense AI
             </span>
           </Link>
-
-          <div className="flex items-center gap-2">
-            <Button
-              variant="ghost"
-              nativeButton={false}
-              render={<Link href="/sign-in">Sign in</Link>}
-            />
-
-            <Button
-              nativeButton={false}
-              render={<Link href="/sign-up">Get started</Link>}
-            />
-          </div>
+          <Startup />
         </div>
       </header>
 

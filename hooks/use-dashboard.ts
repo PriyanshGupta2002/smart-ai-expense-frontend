@@ -5,6 +5,7 @@ import {
   getSpendingTrend,
   getTopMerchants,
   getAIInsights,
+  getDashboardMe,
 } from "@/services/dashboard-service";
 
 import { useQuery } from "@tanstack/react-query";
@@ -48,5 +49,12 @@ export const useAIInsights = () => {
     // Backend Redis remains the actual cache.
     // This just prevents unnecessary browser refetching.
     staleTime: 5 * 60 * 1000,
+  });
+};
+
+export const useDashboardMe = () => {
+  return useQuery({
+    queryKey: queryKeys.dashboard.me,
+    queryFn: getDashboardMe,
   });
 };

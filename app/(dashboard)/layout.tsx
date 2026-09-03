@@ -1,5 +1,5 @@
 import AppSidebar from "@/components/layout/app-sidebar";
-import { Toaster } from "@/components/ui/toast";
+
 import {
   SidebarInset,
   SidebarProvider,
@@ -21,7 +21,6 @@ const DashboardLayout = ({
         </header>
 
         <main className="flex-1 p-4 md:p-6">{children}</main>
-        <Toaster />
       </SidebarInset>
     </SidebarProvider>
   );

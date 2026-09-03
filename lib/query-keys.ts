@@ -20,6 +20,8 @@ export const queryKeys = {
     merchants: (filters: DashboardFilters) =>
       ["dashboard", "merchants", filters] as const,
     insights: ["dashboard", "ai-insights"] as const,
+    me: ["dashboard", "me"] as const,
+    budget: ["dashboard", "budget"] as const,
   },
   receipts: {
     all: ["receipts"] as const,
@@ -43,5 +45,8 @@ export const queryKeys = {
     detail: (threadId: string) => ["threads", "detail", threadId] as const,
 
     messages: (threadId: string) => ["threads", threadId, "messages"] as const,
+  },
+  google: {
+    connectionStatus: ["google-connection-status"] as const,
   },
 };
