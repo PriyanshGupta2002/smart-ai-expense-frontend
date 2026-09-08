@@ -49,4 +49,7 @@ export const queryKeys = {
   google: {
     connectionStatus: ["google-connection-status"] as const,
   },
+  whatsapp: {
+    connectionStatus: ["whatsapp-connection-status"] as const,
+  },
 };

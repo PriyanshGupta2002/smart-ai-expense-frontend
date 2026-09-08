@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
+import { WhatsappConnections } from "@/components/whatsapp";
 
 import { AccountInformationCardProps } from "@/types/dashboard";
 import { FC } from "react";
@@ -79,6 +80,10 @@ export const AccountInformationCard: FC<AccountInformationCardProps> = ({
               }
             />
           )}
+        </div>
+        <div>
+          <span>Whatsapp</span>
+          <WhatsappConnections />
         </div>
       </CardContent>
     </Card>
