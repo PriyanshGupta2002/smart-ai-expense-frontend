@@ -1,7 +1,8 @@
+import { PreferencesPage } from "@/components/settings/preferences";
 import React from "react";
 
 const page = () => {
-  return <div>page</div>;
+  return <PreferencesPage />;
 };
 
 export default page;

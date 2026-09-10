@@ -52,4 +52,7 @@ export const queryKeys = {
   whatsapp: {
     connectionStatus: ["whatsapp-connection-status"] as const,
   },
+  preferences: {
+    preferencesData: ["preferences"] as const,
+  },
 };

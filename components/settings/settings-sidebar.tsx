@@ -29,11 +29,7 @@ const items = [
     url: "/settings/preferences",
     icon: Wallet,
   },
-  {
-    title: "AI Settings",
-    url: "/settings/ai",
-    icon: Sparkles,
-  },
+
   {
     title: "Usage",
     url: "/settings/usage",
