@@ -14,6 +14,7 @@ export const AccountInformationCard: FC<AccountInformationCardProps> = ({
   loading,
   connectionStatus,
   connectionStatusLoading,
+  authorizationStatus,
 }) => {
   return (
     <Card>
@@ -53,32 +54,42 @@ export const AccountInformationCard: FC<AccountInformationCardProps> = ({
 
           {connectionStatusLoading ? (
             <Skeleton className="h-9 w-40" />
-          ) : connectionStatus ? (
-            <div className="flex items-center gap-3">
-              <Badge variant="secondary">Connected</Badge>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => {
-                  // TODO: wire up disconnect logic
-                }}
-              >
-                Disconnect
-              </Button>
-            </div>
-          ) : (
+          ) : !connectionStatus ? (
             <Button
               nativeButton={false}
               render={
                 <a
                   href={`${process.env.NEXT_PUBLIC_API_URL}/api/auth/google/connect`}
-                  target="_blank"
-                  rel="noopener noreferrer"
                 >
                   Connect Google account
                 </a>
               }
             />
+          ) : authorizationStatus === "reauthorization_required" ? (
+            <Button
+              nativeButton={false}
+              render={
+                <a
+                  href={`${process.env.NEXT_PUBLIC_API_URL}/api/auth/google/reconnect`}
+                >
+                  Reconnect Google
+                </a>
+              }
+            />
+          ) : (
+            <div className="flex items-center gap-3">
+              <Badge variant="secondary">Connected</Badge>
+
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => {
+                  // disconnect
+                }}
+              >
+                Disconnect
+              </Button>
+            </div>
           )}
         </div>
         <div>

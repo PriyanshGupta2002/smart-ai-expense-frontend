@@ -65,4 +65,5 @@ export interface AccountInformationCardProps {
   loading: boolean;
   connectionStatus: boolean;
   connectionStatusLoading: boolean;
+  authorizationStatus: string;
 }

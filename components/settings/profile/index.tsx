@@ -29,6 +29,7 @@ export default function Profile() {
         created_at={dateTimeFormatter(data?.created_at)}
         loading={isLoading}
         connectionStatus={statusData?.connected}
+        authorizationStatus={statusData?.authorization_status}
         connectionStatusLoading={statusLoading}
       />
     </div>
